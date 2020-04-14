@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+        <Style id="6">
+            <LineStyle id="7">
+                <color>ffffaf00</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="10">
+            <LineStyle id="11">
+                <color>ffff0f00</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="14">
+            <LineStyle id="15">
+                <color>ffff5f00</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="18">
+            <LineStyle id="19">
+                <color>ffff008f</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="22">
+            <LineStyle id="23">
+                <color>ffcf00ff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="26">
+            <LineStyle id="27">
+                <color>ffff00df</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="30">
+            <LineStyle id="31">
+                <color>ffff003f</color>
+                <colorMode>normal</colorMode>
+                <width>3</width>
+            </LineStyle>
+        </Style>
+        <Style id="34">
+            <LineStyle id="35">
+                <color>ff2f00ff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="38">
+            <LineStyle id="39">
+                <color>ff006fff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="42">
+            <LineStyle id="43">
+                <color>ff001fff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="46">
+            <LineStyle id="47">
+                <color>ff000fff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="50">
+            <LineStyle id="51">
+                <color>ff00afff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="54">
+            <LineStyle id="55">
+                <color>ff005fff</color>
+                <colorMode>normal</colorMode>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Style id="58">
+            <LineStyle id="59">
+                <color>ff00bfff</color>
+                <colorMode>normal</colorMode>
+                <width>3</width>
+            </LineStyle>
+        </Style>
+        <Placemark id="3">
+            <Point id="2">
+                <coordinates>4.832011,45.757814,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="5">
+            <name>Jean-Baptiste MARTIN</name>
+            <styleUrl>#6</styleUrl>
+            <LineString id="4">
+                <coordinates>4.387306,45.440147,0.0 4.321262,45.434899,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="9">
+            <name>Camille FRAMBOISIER</name>
+            <styleUrl>#10</styleUrl>
+            <LineString id="8">
+                <coordinates>4.387306,45.440147,0.0 4.387306,45.440147,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="13">
+            <name>Gabriel MARTIN</name>
+            <styleUrl>#14</styleUrl>
+            <LineString id="12">
+                <coordinates>4.387306,45.440147,0.0 4.387306,45.440147,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="17">
+            <name>Jean-Pierre MARIE</name>
+            <styleUrl>#18</styleUrl>
+            <LineString id="16">
+                <coordinates>5.920364,45.566267,0.0 5.914636,45.688629,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="21">
+            <name>Anne CORLIC</name>
+            <styleUrl>#22</styleUrl>
+            <LineString id="20">
+                <coordinates>5.920364,45.566267,0.0 5.735782,45.18756,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="25">
+            <name>Henriette MARIE</name>
+            <styleUrl>#26</styleUrl>
+            <LineString id="24">
+                <coordinates>4.387306,45.440147,0.0 5.920364,45.566267,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="29">
+            <name>Antoine MARTIN</name>
+            <styleUrl>#30</styleUrl>
+            <LineString id="28">
+                <coordinates>4.832011,45.757814,0.0 4.387306,45.440147,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="33">
+            <name>Charles BERNARD</name>
+            <styleUrl>#34</styleUrl>
+            <LineString id="32">
+                <coordinates>6.108849,46.033654,0.0 6.267664,46.106677,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="37">
+            <name>Annie VERSAIRE</name>
+            <styleUrl>#38</styleUrl>
+            <LineString id="36">
+                <coordinates>6.108849,46.033654,0.0 5.929342,46.019066,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="41">
+            <name>Pierre BERNARD</name>
+            <styleUrl>#42</styleUrl>
+            <LineString id="40">
+                <coordinates>6.128885,45.899235,0.0 6.108849,46.033654,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="45">
+            <name>Antonin THOMAS</name>
+            <styleUrl>#46</styleUrl>
+            <LineString id="44">
+                <coordinates>6.306224,45.987359,0.0 6.306224,45.987359,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="49">
+            <name>Bernadette COULEUVRE</name>
+            <styleUrl>#50</styleUrl>
+            <LineString id="48">
+                <coordinates>6.306224,45.987359,0.0 6.22982,45.975617,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="53">
+            <name>Jeanne THOMAS</name>
+            <styleUrl>#54</styleUrl>
+            <LineString id="52">
+                <coordinates>6.128885,45.899235,0.0 6.306224,45.987359,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="57">
+            <name>C©♭line BERNARD</name>
+            <styleUrl>#58</styleUrl>
+            <LineString id="56">
+                <coordinates>4.832011,45.757814,0.0 6.128885,45.899235,0.0</coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>
