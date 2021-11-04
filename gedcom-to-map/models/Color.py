@@ -6,7 +6,7 @@ class Color:
         self.a = a
 
     def to_hexa(self) -> str:
-        return "{:02x}{:02x}{:02x}{:02x}".format(self.a, self.r, self.g, self.b)
+        return "{:02x}{:02x}{:02x}".format(self.r, self.g, self.b)
 
     def __repr__(self):
         return "({:3}, {:3}, {:3}, {:3})".format(self.r, self.g, self.b, self.a)
