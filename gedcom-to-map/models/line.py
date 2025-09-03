@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from models.Color import Color
-from models.Pos import Pos
+from models.color import Color
+from models.pos import Pos
 
 
 @dataclass

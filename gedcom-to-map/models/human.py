@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from models.Pos import Pos
+from models.pos import Pos
 
 
 @dataclass

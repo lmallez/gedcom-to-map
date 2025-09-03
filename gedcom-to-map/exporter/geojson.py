@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from typing import List, Dict, Any
 
-from models.Line import Line
-from models.Pos import Pos
+from models.line import Line
+from models.pos import Pos
 
 
 class GeoJsonExporter:

@@ -3,11 +3,10 @@ from __future__ import annotations
 import argparse
 from typing import Type, Dict
 
-from creator.Creator import Creator
-from exporter.GeoJsonExporter import GeoJsonExporter
-from gedcom.GedcomParser import GedcomParser
-from exporter.KmlExporter import KmlExporter
-
+from creator.creator import Creator
+from exporter.geojson import GeoJsonExporter
+from exporter.kml import KmlExporter
+from gedcom.parser import GedcomParser
 
 EXPORTERS: Dict[str, Type] = {
     "kml": KmlExporter,

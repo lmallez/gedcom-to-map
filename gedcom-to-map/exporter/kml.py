@@ -4,8 +4,9 @@ import math
 from typing import List
 
 import simplekml
-from models.Line import Line
-from models.Pos import Pos
+
+from models.line import Line
+from models.pos import Pos
 
 
 class KmlExporter:

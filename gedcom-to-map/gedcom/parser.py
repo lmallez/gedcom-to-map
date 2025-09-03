@@ -5,8 +5,8 @@ from typing import Dict
 from ged4py import GedcomReader
 from ged4py.model import Record
 
-from models.Human import Human
-from models.Pos import Pos
+from models.human import Human
+from models.pos import Pos
 
 
 class GedcomParser:

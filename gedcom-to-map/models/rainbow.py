@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from models.Color import Color
+from models.color import Color
 
 
 def merge_color(color_a: Color, color_b: Color, coef: float) -> Color:

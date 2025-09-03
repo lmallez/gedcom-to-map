@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from models.Human import Human
-from models.Line import Line
-from models.Pos import Pos
-from models.Rainbow import Rainbow
+from models.human import Human
+from models.line import Line
+from models.pos import Pos
+from models.rainbow import Rainbow
 
 space = 2.5
 delta = 1.5
