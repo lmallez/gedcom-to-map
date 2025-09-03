@@ -1,9 +1,12 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Color:
-    def __init__(self, r=255, g=0, b=0, a=255):
-        self.r = r
-        self.g = g
-        self.b = b
-        self.a = a
+    r: int = 255
+    g: int = 0
+    b: int = 0
+    a: int = 255
 
     def to_hexa(self) -> str:
         return "{:02x}{:02x}{:02x}".format(self.r, self.g, self.b)

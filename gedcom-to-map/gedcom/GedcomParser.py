@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Dict
 
 from ged4py import GedcomReader
@@ -8,55 +10,62 @@ from models.Pos import Pos
 
 
 class GedcomParser:
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         self.file_path = file_name
 
     @staticmethod
-    def __create_human(record: Record) -> Human:
+    def _signed(coord: str) -> float:
+        # coord like "N50.1234" or "W003.4567"
+        head, tail = coord[0], coord[1:]
+        if head in ("N", "E"):
+            return float(tail)
+        return float("-{tail}")
+
+    @staticmethod
+    def _create_human(record: Record) -> Human:
         human = Human(record.xref_id)
-        name: Record = record.sub_tag("NAME")
-        if name:
-            human.name = "{} {}".format(name.value[0], name.value[1])
+
+        name_rec: Record | None = record.sub_tag("NAME")
+        if name_rec:
+            # Keep exact order as before: given then family
+            human.name = f"{name_rec.value[0]} {name_rec.value[1]}"
+
         birt = record.sub_tag("BIRT")
         if birt:
             plac = birt.sub_tag("PLAC")
             if plac:
-                map = plac.sub_tag("MAP")
-                if map:
-                    lat = map.sub_tag("LATI")
-                    lon = map.sub_tag("LONG")
+                map_rec = plac.sub_tag("MAP")
+                if map_rec:
+                    lat = map_rec.sub_tag("LATI")
+                    lon = map_rec.sub_tag("LONG")
                     if lat and lon:
                         human.pos = Pos(
-                            (
-                                lat.value[1:]
-                                if lat.value[0] == "N"
-                                else "-{}".format(lat.value[1:])
-                            ),
-                            (
-                                lon.value[1:]
-                                if lon.value[0] == "E"
-                                else "-{}".format(lon.value[1:])
-                            ),
+                            GedcomParser._signed(lat.value),
+                            GedcomParser._signed(lon.value),
                         )
         return human
 
     @staticmethod
-    def __create_humans(records0) -> Dict[str, Human]:
-        humans = dict()
-        for record in records0("INDI"):
-            humans[record.xref_id] = GedcomParser.__create_human(record)
-        for record in records0("FAM"):
-            husband = record.sub_tag("HUSB")
-            wife = record.sub_tag("WIFE")
-            for chil in record.sub_tags("CHIL"):
-                if chil.xref_id not in humans.keys():
+    def _create_humans(records0) -> Dict[str, Human]:
+        humans: Dict[str, Human] = {}
+
+        for rec in records0("INDI"):
+            humans[rec.xref_id] = GedcomParser._create_human(rec)
+
+        for fam in records0("FAM"):
+            husband = fam.sub_tag("HUSB")
+            wife = fam.sub_tag("WIFE")
+            for chil in fam.sub_tags("CHIL"):
+                cid = chil.xref_id
+                if cid not in humans:
                     continue
+                child = humans[cid]
                 if husband:
-                    humans[chil.xref_id].father = husband.xref_id
+                    child.father_id = husband.xref_id
                 if wife:
-                    humans[chil.xref_id].mother = wife.xref_id
+                    child.mother_id = wife.xref_id
         return humans
 
     def create_humans(self) -> Dict[str, Human]:
         with GedcomReader(self.file_path) as parser:
-            return self.__create_humans(parser.records0)
+            return self._create_humans(parser.records0)

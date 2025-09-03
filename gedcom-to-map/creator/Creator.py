@@ -1,76 +1,103 @@
-from typing import Dict
+from __future__ import annotations
+
+from typing import Dict, List
 
 from models.Human import Human
 from models.Line import Line
 from models.Pos import Pos
 from models.Rainbow import Rainbow
 
-
 space = 2.5
 delta = 1.5
 
 
 class Creator:
-    def __init__(self, humans: Dict[str, Human], max_missing=0):
+    def __init__(self, humans: Dict[str, Human], max_missing: int = 0):
         self.humans = humans
         self.rainbow = Rainbow()
         self.max_missing = max_missing
 
-    def line(self, pos: Pos, current: Human, branch, prof, miss, path="") -> list[Line]:
+    def _append_line_and_recurse(
+        self,
+        acc: List[Line],
+        pos: Pos,
+        current: Human,
+        branch: float,
+        prof: int,
+        miss: int,
+        path: str,
+    ) -> None:
         if current.pos:
-            color = (branch + delta / 2) / (space**prof)
+            color_val = (branch + delta / 2) / (space**prof)
+            color_obj = self.rainbow.get(color_val)
+
             print(
                 "{:8} {:8} {:2} {:.10f} {} {:20}".format(
                     path,
                     branch,
                     prof,
-                    color,
-                    self.rainbow.get(color).to_hexa(),
+                    color_val,
+                    color_obj.to_hexa(),
                     current.name,
                 )
             )
-            line = Line(
-                "{:8} {}".format(path, current.name),
-                pos,
-                current.pos,
-                self.rainbow.get(color),
-                prof,
-            )
-            return self.link(current.pos, current, branch, prof, 0, path) + [line]
-        else:
-            if self.max_missing != 0 and miss >= self.max_missing:
-                return []
-            return self.link(pos, current, branch, prof, miss + 1, path)
 
-    def link(
-        self, pos: Pos, current: Human, branch=0, prof=0, miss=0, path=""
-    ) -> list[Line]:
-        return (
-            self.line(
+            self._link(acc, current.pos, current, branch, prof, 0, path)
+
+            acc.append(
+                Line(
+                    f"{path:8} {current.name}",
+                    pos,
+                    current.pos,
+                    color_obj,
+                    prof,
+                )
+            )
+            return
+
+        if self.max_missing != 0 and miss >= self.max_missing:
+            return
+
+        self._link(acc, pos, current, branch, prof, miss + 1, path)
+
+    def _link(
+        self,
+        acc: List[Line],
+        pos: Pos,
+        current: Human,
+        branch: float = 0.0,
+        prof: int = 0,
+        miss: int = 0,
+        path: str = "",
+    ) -> None:
+        if current.father_id:
+            father = self.humans[current.father_id]
+            self._append_line_and_recurse(
+                acc,
                 pos,
-                self.humans[current.father],
+                father,
                 branch * space,
                 prof + 1,
                 miss,
                 path + "0",
             )
-            if current.father
-            else []
-        ) + (
-            self.line(
+
+        if current.mother_id:
+            mother = self.humans[current.mother_id]
+            self._append_line_and_recurse(
+                acc,
                 pos,
-                self.humans[current.mother],
+                mother,
                 branch * space + delta,
                 prof + 1,
                 miss,
                 path + "1",
             )
-            if current.mother
-            else []
-        )
 
-    def create(self, main_id: str):
-        if main_id not in self.humans.keys():
-            raise
+    def create(self, main_id: str) -> List[Line]:
+        if main_id not in self.humans:
+            raise KeyError(f"Unknown human id: {main_id}")
         current = self.humans[main_id]
-        return self.link(current.pos, current)
+        acc: List[Line] = []
+        self._link(acc, current.pos, current)
+        return acc
