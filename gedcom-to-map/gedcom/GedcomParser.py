@@ -1,7 +1,7 @@
 from typing import Dict
 
 from ged4py import GedcomReader
-from ged4py.model import Record, NameRec
+from ged4py.model import Record
 
 from models.Human import Human
 from models.Pos import Pos
@@ -14,7 +14,7 @@ class GedcomParser:
     @staticmethod
     def __create_human(record: Record) -> Human:
         human = Human(record.xref_id)
-        name: NameRec = record.sub_tag("NAME")
+        name: Record = record.sub_tag("NAME")
         if name:
             human.name = "{} {}".format(name.value[0], name.value[1])
         birt = record.sub_tag("BIRT")
@@ -27,8 +27,16 @@ class GedcomParser:
                     lon = map.sub_tag("LONG")
                     if lat and lon:
                         human.pos = Pos(
-                            lat.value[1:] if lat.value[0] == 'N' else '-{}'.format(lat.value[1:]),
-                            lon.value[1:] if lon.value[0] == 'E' else '-{}'.format(lon.value[1:]),
+                            (
+                                lat.value[1:]
+                                if lat.value[0] == "N"
+                                else "-{}".format(lat.value[1:])
+                            ),
+                            (
+                                lon.value[1:]
+                                if lon.value[0] == "E"
+                                else "-{}".format(lon.value[1:])
+                            ),
                         )
         return human
 

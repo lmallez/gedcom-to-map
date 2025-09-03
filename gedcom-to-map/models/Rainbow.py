@@ -5,7 +5,7 @@ def merge_color(color_a: Color, color_b: Color, coef):
     return Color(
         color_a.r * (1 - coef) + color_b.r * coef,
         color_a.g * (1 - coef) + color_b.g * coef,
-        color_a.b * (1 - coef) + color_b.b * coef
+        color_a.b * (1 - coef) + color_b.b * coef,
     )
 
 
@@ -46,13 +46,13 @@ class Rainbow:
         return Color(
             int(color_a.r * (1 - coef) + color_b.r * coef),
             int(color_a.g * (1 - coef) + color_b.g * coef),
-            int(color_a.b * (1 - coef) + color_b.b * coef)
+            int(color_a.b * (1 - coef) + color_b.b * coef),
         )
 
     def get(self, v: float) -> Color:
         if v >= 1 or v < 0:
             raise
-        len_steps = len(self.steps ) - 1
+        len_steps = len(self.steps) - 1
         step = int(v * len_steps)
         pos = v % (1 / len_steps) * len_steps
         return self.merge_color(self.steps[step], self.steps[step + 1], pos)

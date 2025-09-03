@@ -8,9 +8,5 @@ class Human:
 
     def __repr__(self):
         return "[ {} : {} - {} {} - {} ]".format(
-            self.xref_id,
-            self.name,
-            self.father,
-            self.mother,
-            self.pos
+            self.xref_id, self.name, self.father, self.mother, self.pos
         )
