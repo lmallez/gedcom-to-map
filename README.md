@@ -1,24 +1,25 @@
 # gedcom-to-map
 
-convert Gedcom to KML file
+convert Gedcom to KML/GeoJSON file
  _geographic coordinates must be provided in GEDCOM file_
  
  
  ### Usage
  
  ```
-gedcom-to-map.py [-h] [--max_missing MAX_MISSING]
-                        [--max_line_weight MAX_LINE_WEIGHT]
-                        input_file output_file main_entity
+gedcom_to_map.py [-h] [--max_missing MAX_MISSING]
+                       [--max_line_weight MAX_LINE_WEIGHT]
+                       [--format (kml, geojson)]
+                       input_file output_file main_entity_id
 ```
 
-### Exemple
+### Example
 
 
-* Input : [sample/intput.kml](https://github.com/lmallez/gedcom-to-map/blob/master/samples/input.ged)
-![img](https://github.com/lmallez/gedcom-to-map/blob/master/samples/input.png)
+* Input : [sample/intput.ged](samples/input.ged)
+![img](samples/input.png)
 
-`gedcom-to-map.py samples/input.ged samples/output.kml @I0000@`
+`gedcom_to_map.py samples/input.ged samples/output.kml @I0000@`
 
-* Output : [sample/output.kml](https://github.com/lmallez/gedcom-to-map/blob/master/samples/output.kml)
-![img](https://github.com/lmallez/gedcom-to-map/blob/master/samples/output.png)
+* Output : [sample/output.kml](samples/output.kml)
+![img](samples/output.png)
